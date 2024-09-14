@@ -1,10 +1,11 @@
 use minifb::{Key, MouseButton};
 
-use crate::types::Color;
+use crate::types::{Color, GameTime};
 
 pub struct Window {
     pub buf: Buffer,
     pub running: bool,
+    pub time: GameTime,
     mini_window: minifb::Window,
 }
 
@@ -14,10 +15,12 @@ impl Window {
         let mini_window =
             minifb::Window::new(&title, width, height, minifb::WindowOptions::default())
                 .expect("Failed to create minifb window");
+        let time = GameTime::new();
 
         Window {
             buf,
             mini_window,
+            time,
             running: true,
         }
     }
@@ -42,6 +45,7 @@ impl Window {
         if !self.mini_window.is_open() {
             self.running = false;
         }
+        self.time.new_frame();
     }
 
     pub fn flip(&mut self) {

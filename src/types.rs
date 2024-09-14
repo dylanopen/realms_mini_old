@@ -1,3 +1,25 @@
+use std::time::Instant;
+
+#[derive(Debug)]
+pub struct GameTime {
+    last_frame: Instant,
+    pub delta: f32,
+}
+
+impl GameTime {
+    pub fn new() -> GameTime {
+        GameTime {
+            last_frame: Instant::now(),
+            delta: 0.0,
+        }
+    }
+
+    pub fn new_frame(&mut self) {
+        self.delta = self.last_frame.elapsed().as_secs_f32();
+        self.last_frame = Instant::now();
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct Color {
     pub r: u8,
