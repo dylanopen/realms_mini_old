@@ -2,6 +2,16 @@
 name = "realms"
 version = "0.0.2"
 edition = "2021"
+description = "A powerful and lightweight graphics library for making Rust games"
+license = "GPL-3.0"
+documentation = "https://github.com/dylanopen/realms/tree/master/docs"
+homepage = "https://github.com/dylanopen/realms"
+repository = "https://github.com/dylanopen/realms"
+authors = ["Dylan Rogers <opendylan@proton.me>"]
+readme = "README.md"
+keywords = ["game", "graphics", "window", "draw", "pixel"]
+categories = ["rendering", "rendering::graphics-api", "visualization", "graphics", "gui"]
+
 
 [dependencies]
 minifb = "0.27.0"
