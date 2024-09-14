@@ -3,20 +3,25 @@ use std::time::Instant;
 #[derive(Debug)]
 pub struct GameTime {
     last_frame: Instant,
+    game_start: Instant,
     pub delta: f32,
+    pub running: f32,
 }
 
 impl GameTime {
     pub fn new() -> GameTime {
         GameTime {
             last_frame: Instant::now(),
+            game_start: Instant::now(),
             delta: 0.0,
+            running: 0.0,
         }
     }
 
     pub fn new_frame(&mut self) {
         self.delta = self.last_frame.elapsed().as_secs_f32();
         self.last_frame = Instant::now();
+        self.running = self.game_start.elapsed().as_secs_f32();
     }
 }
 
